@@ -42,4 +42,5 @@ app.Run();
 /*
     dotnet add package Pomelo.EntityFrameworkCore.MySql --version 6.0.1
     dotnet add package Microsoft.EntityFrameworkCore.Design --version 6.0.3
+    dotnet add package Microsoft.AspNetCore.Authentication.Google --version 6.0.8
 */
