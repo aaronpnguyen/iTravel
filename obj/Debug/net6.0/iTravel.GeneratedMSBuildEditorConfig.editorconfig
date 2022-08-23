@@ -8,7 +8,11 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = iTravel
 build_property.RootNamespace = iTravel
+<<<<<<< HEAD
 build_property.ProjectDir = c:\Users\mikki\OneDrive\Desktop\CodingDojo\C#\iTravel\iTravel\
+=======
+build_property.ProjectDir = D:\Coding Dojo\Projects\iTravel\
+>>>>>>> 6ad26e42b860f3d628b9602d82e1c1feccc6be0c
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
@@ -59,6 +63,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+<<<<<<< HEAD
 [c:/Users/mikki/OneDrive/Desktop/CodingDojo/C\#/iTravel/iTravel/Views/Shared/_Layout.cshtml]
+=======
+[D:/Coding Dojo/Projects/iTravel/Views/Shared/_Layout.cshtml]
+>>>>>>> 6ad26e42b860f3d628b9602d82e1c1feccc6be0c
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-543kfznahy
