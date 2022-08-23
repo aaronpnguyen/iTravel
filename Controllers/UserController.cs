@@ -46,6 +46,16 @@ public class UserController: Controller
             if (DATABASE.Users.Any(user => user.Username == newUser.Username))
             {
                 ModelState.AddModelError("Username", "already in use!");
+                if (DATABASE.Users.Any(u => u.Email == newUser.Email))
+                {
+                    ModelState.AddModelError("Email", "already in use!");
+                    return LogReg();
+                }
+                return LogReg();
+            }
+            if (DATABASE.Users.Any(u => u.Email == newUser.Email))
+            {
+                ModelState.AddModelError("Email", "already in use!");
                 return LogReg();
             }
         }
