@@ -1,43 +1,49 @@
-@model User;
+@model User
 
-<h1>Register</h1>
 
 <form asp-controller="User" asp-action="CreateUser" method="post">
+    <h1>Register</h1>
     <div>
         <div class="Validation">
             <label asp-for="FirstName"></label>
             <span style="color: red;" asp-validation-for="FirstName"></span>
         </div>
-        <input asp-for="FirstName">
+        <input class="form-control" asp-for="FirstName">
     </div>
     <div>
         <div class="Validation">
             <label asp-for="LastName"></label>
             <span style="color: red;" asp-validation-for="LastName"></span>
         </div>
-        <input asp-for="LastName">
+        <input class="form-control" asp-for="LastName">
     </div>
     <div>
         <div class="Validation">
             <label asp-for="Email"></label>
             <span style="color: red;" asp-validation-for="Email"></span>
         </div>
-        <input asp-for="Email">
+        <input class="form-control" asp-for="Email">
+    </div>
+    <div>
+        <div class="Validation">
+            <label asp-for="Username"></label>
+            <span style="color: red;" asp-validation-for="Username"></span>
+        </div>
+        <input class="form-control" asp-for="Username">
     </div>
     <div>
         <div class="Validation">
             <label asp-for="Password"></label>
             <span style="color: red;" asp-validation-for="Password"></span>
         </div>
-        <input asp-for="Password">
+        <input class="form-control" asp-for="Password">
     </div>
     <div>
         <div class="Validation">
             <label asp-for="Confirm"></label>
             <span style="color: red;" asp-validation-for="Confirm"></span>
         </div>
-        <input asp-for="Confirm">
+        <input class="form-control" asp-for="Confirm">
     </div>
-    <br>
-    <button>Register</button>
+    <button class="btn btn-primary mt-4">Register</button>
 </form>

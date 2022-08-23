@@ -11,26 +11,34 @@ public class User
 
     [Required(ErrorMessage = "is requried!")]
     [MinLength(2, ErrorMessage = "must contain more than 2 characters!")]
-    [Display(Name = "First Name")]
+    [Display(Name = "First Name ")]
     public string FirstName {get;set;}
 
     [Required(ErrorMessage = "is requried!")]
     [MinLength(2, ErrorMessage = "must contain more than 2 characters!")]
-    [Display(Name = "Last Name")]
+    [Display(Name = "Last Name ")]
     public string LastName {get;set;}
+
+    [Required(ErrorMessage = "is required!")]
+    [MinLength(5, ErrorMessage = "must be more than 5 characters!")]
+    [Display(Name = "Username ")]
+    public string Username {get; set;}
     
     [Required(ErrorMessage = "is requried!")]
     [EmailAddress]
+    [Display(Name = "Email ")]
     public string Email {get;set;}
     
     [Required(ErrorMessage = "is required!")]
     [MinLength(8, ErrorMessage = "must contain more than 8 characters!")]
     [DataType(DataType.Password)]
+    [Display(Name = "Password ")]
     public string Password {get;set;}
 
     [NotMapped]
     [Compare("Password", ErrorMessage = "does not match password!")]
     [DataType(DataType.Password)]
+    [Display(Name = "Confirm Password ")]
     public string Confirm {get;set;}
 
     public DateTime CreatedAt {get;set;} = DateTime.Now;
