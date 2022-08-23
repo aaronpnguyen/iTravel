@@ -102,9 +102,17 @@ public class UserController: Controller
     {
         if (notLogged) return RedirectToAction("LogReg");
 
-        List<Destination> Destinations = DATABASE.Destinations.ToList();
+        List<Destination> Destinations = DATABASE.Destinations.Include(u => u.Creator).ToList();
 
         return View("Dashboard", Destinations);
+    }
+
+    [HttpGet("/user/{id}")]
+    public IActionResult UserProfile()
+    {
+        if (notLogged) return RedirectToAction("LogReg");
+        User? user = DATABASE.Users.FirstOrDefault(u => u.UserId == id);
+        return View("UserProfile", user);
     }
 
     [HttpPost("/clear/id")]

@@ -7,7 +7,7 @@
             <label asp-for="City"></label>
             <span style="color: red;" asp-validation-for="City"></span>
         </div>
-        <input asp-for="City">
+        <input class="form-control w-25 mb-3" asp-for="City">
     </div>
 
     <div>
@@ -15,15 +15,23 @@
             <label asp-for="Country"></label>
             <span style="color: red;" asp-validation-for="Country"></span>
         </div>
-        <input asp-for="Country">
+        <input class="form-control w-25 mb-3" asp-for="Country">
     </div>
+    @* impliment images l8r *@
+    @* <div>
+        <div class="validations">
+            <label asp-for="Image"></label>
+            <span style="color: red;" asp-validation-for="Image"></span>
+        </div>
+        <input asp-for="Image" type="file" class="form-control w-25 mb-3" >
+    </div> *@
 
     <div>
         <div class="validations">
             <label asp-for="DestinationMessage"></label>
             <span style="color: red;" asp-validation-for="DestinationMessage"></span>
         </div>
-        <textarea asp-for="DestinationMessage"></textarea>
+        <textarea class="form-control w-25" asp-for="DestinationMessage"></textarea>
     </div>
-    <button>Submit</button>
+    <button class="btn btn-primary mt-3">Submit</button>
 </form>

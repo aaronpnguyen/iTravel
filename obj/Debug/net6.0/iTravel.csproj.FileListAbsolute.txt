@@ -68,4 +68,8 @@ C:\Users\mikki\OneDrive\Desktop\CodingDojo\C#\iTravel\iTravel\obj\Debug\net6.0\s
 C:\Users\mikki\OneDrive\Desktop\CodingDojo\C#\iTravel\iTravel\obj\Debug\net6.0\iTravel.csproj.CopyComplete
 C:\Users\mikki\OneDrive\Desktop\CodingDojo\C#\iTravel\iTravel\obj\Debug\net6.0\iTravel.genruntimeconfig.cache
 C:\Users\mikki\OneDrive\Desktop\CodingDojo\C#\iTravel\iTravel\obj\Debug\net6.0\ref\iTravel.dll
+<<<<<<< HEAD
 D:\Coding Dojo\Projects\iTravel\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.Google.dll
+=======
+C:\Users\mikki\OneDrive\Desktop\CodingDojo\C#\iTravel\iTravel\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.Google.dll
+>>>>>>> Kaija's-Branch
