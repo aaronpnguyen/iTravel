@@ -43,9 +43,9 @@ public class UserController: Controller
     {
         if (ModelState.IsValid)
         {
-            if (DATABASE.Users.Any(user => user.Email == newUser.Email))
+            if (DATABASE.Users.Any(user => user.Username == newUser.Username))
             {
-                ModelState.AddModelError("Email", "already in use!");
+                ModelState.AddModelError("Username", "already in use!");
                 return LogReg();
             }
         }
@@ -65,11 +65,11 @@ public class UserController: Controller
     {
         if (!ModelState.IsValid) return LogReg();
 
-        User? user = DATABASE.Users.FirstOrDefault(user => user.Email == logUser.LoginEmail);
+        User? user = DATABASE.Users.FirstOrDefault(user => user.Username == logUser.LoginUsername);
 
         if (user == null)
         {
-            ModelState.AddModelError("LoginEmail", "may be incorrect");
+            ModelState.AddModelError("LoginUsername", "may be incorrect");
             ModelState.AddModelError("LoginPassword", "may be incorrect");
             return LogReg();
         }
