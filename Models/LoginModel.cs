@@ -7,11 +7,11 @@ public class LoginUser
 {
     [Required(ErrorMessage = "is required")]
     [EmailAddress]
-    [Display(Name = "Email")]
-    public string LoginEmail {get;set;}
+    [Display(Name = "Username ")]
+    public string LoginUsername {get;set;}
 
     [Required(ErrorMessage = "is required")]
     [DataType(DataType.Password)]
-    [Display(Name = "Password")]
+    [Display(Name = "Password ")]
     public string LoginPassword {get;set;}
 }
