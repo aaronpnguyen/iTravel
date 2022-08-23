@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "QUXuVLNJUmj6CEIEbtZ2Ofkf58hul09gY4xUu2oKZc25x9JUHZSMi+Q6FGm9z4lcaKgrHUUxlGRiXR0ebO2+kg==",
+  "dgSpecHash": "eu1FpNAOvSocNtWSK4zK7Z0P7i4/oUbLv15mSeriVsu369raxAcIInBQdmqf1q7q1iM3sVXCQTR/sY+OGeN4SA==",
   "success": true,
   "projectFilePath": "D:\\Coding Dojo\\Projects\\iTravel\\iTravel.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Aaron\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\Aaron\\.nuget\\packages\\microsoft.aspnetcore.authentication.google\\6.0.8\\microsoft.aspnetcore.authentication.google.6.0.8.nupkg.sha512",
     "C:\\Users\\Aaron\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.3\\microsoft.entityframeworkcore.6.0.3.nupkg.sha512",
     "C:\\Users\\Aaron\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.3\\microsoft.entityframeworkcore.abstractions.6.0.3.nupkg.sha512",
     "C:\\Users\\Aaron\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\6.0.3\\microsoft.entityframeworkcore.analyzers.6.0.3.nupkg.sha512",

@@ -6,7 +6,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 public class LoginUser
 {
     [Required(ErrorMessage = "is required")]
-    [EmailAddress]
     [Display(Name = "Username ")]
     public string LoginUsername {get;set;}
 

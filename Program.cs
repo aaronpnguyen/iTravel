@@ -6,6 +6,16 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddSession();
+// Google Authenticator Service?
+// builder.Services.AddAuthentication(options => {
+//     options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;})
+//     .AddCookie(options => {
+//         options.LoginPath = "/Account/google-login";
+//     })
+//     .AddGoogle(options => {
+//         options.ClientId = "792338080611-7lvv6vgvcsu76dka7v0g9ecjs70oasah.apps.googleusercontent.com";
+//         options.ClientSecret = "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";
+//     });
 
 builder.Services.AddDbContext<MyContext>(options => {
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
@@ -20,6 +30,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseStaticFiles();
 app.UseRouting();
+// app.UseAuthentication(); // For Google Authentication
 app.UseAuthorization();
 app.UseSession();
 
