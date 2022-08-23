@@ -15,14 +15,19 @@ public class Destination
     [Required]
     public string Country {get;set;}
 
+    [Display(Name = "Caption ")]
     [Required]
     public string DestinationMessage {get;set;}
+
+    [Display(Name = "Image: ")]
+    public string Image {get; set;}
 
     public DateTime CreatedAt {get;set;} = DateTime.Now;
     public DateTime UpdatedAt {get;set;} = DateTime.Now;
 
     public int UserId {get;set;}
     public User? Creator {get;set;}
+
 
 
     public string Place()

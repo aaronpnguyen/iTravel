@@ -1,13 +1,16 @@
 @model List<Destination>
 
-<h1>Success</h1>
-
-<div class="PostContainer">
+<div class="PostContainer mx-auto w-50">
     @foreach (Destination item in Model)
     {
-        <div class="Post">
-            <h1>@item.Place()</h1>
-            <h1>@item.DestinationMessage</h1>
+        <div class="Post border mb-5 p-3">
+            <h3>@item.Place()</h3>
+            <h4>@item.DestinationMessage</h4>
+            <h5>@item.Creator.Username</h5>
+            @* @if(item.Image != null)
+            {
+                <img src="@item.Image" alt="noimg">
+            } *@
             <!-- Need to find a way to use google maps to geolocate (statically) -->
         </div>
     }

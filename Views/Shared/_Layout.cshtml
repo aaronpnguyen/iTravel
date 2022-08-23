@@ -21,11 +21,15 @@
                     <ul class="navbar-nav flex-grow-1">
                         @if (@Context.Session.GetInt32("id") != null)
                         {
+                            int? id = @Context.Session.GetInt32("id");
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Dashboard">Dashboard</a>
                             </li>
                             <li class="nav-item">
-                                <form asp-controller="User" asp-action="Logout" method="post"><button>Logout</button></form>
+                                <a class="btn btn-primary me-4" href="/user/@id">Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <form asp-controller="User" asp-action="Logout" method="post"><button class="btn btn-danger">Logout</button></form>
                             </li>
                         }
                     </ul>

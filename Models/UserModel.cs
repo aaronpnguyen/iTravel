@@ -28,7 +28,10 @@ public class User
     [EmailAddress]
     [Display(Name = "Email ")]
     public string Email {get;set;}
-    
+
+    [Display(Name = "Profile Picture: ")]
+    public string ProfilePic {get; set;}
+
     [Required(ErrorMessage = "is required!")]
     [MinLength(8, ErrorMessage = "must contain more than 8 characters!")]
     [DataType(DataType.Password)]
