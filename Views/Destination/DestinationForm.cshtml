@@ -1,0 +1,29 @@
+@model Destination
+<h1>Destination Form</h1>
+
+<form asp-controller="Destination" asp-action="SubmitDestination" method="post">
+    <div>
+        <div class="validations">
+            <label asp-for="City"></label>
+            <span style="color: red;" asp-validation-for="City"></span>
+        </div>
+        <input asp-for="City">
+    </div>
+
+    <div>
+        <div class="validations">
+            <label asp-for="Country"></label>
+            <span style="color: red;" asp-validation-for="Country"></span>
+        </div>
+        <input asp-for="Country">
+    </div>
+
+    <div>
+        <div class="validations">
+            <label asp-for="DestinationMessage"></label>
+            <span style="color: red;" asp-validation-for="DestinationMessage"></span>
+        </div>
+        <textarea asp-for="DestinationMessage"></textarea>
+    </div>
+    <button>Submit</button>
+</form>
