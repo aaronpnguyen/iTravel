@@ -1,2 +1,18 @@
+@model List<Destination>
+
 <h1>Success</h1>
+
+<div class="PostContainer">
+    @foreach (Destination item in Model)
+    {
+        <div class="Post">
+            <h1>@item.Place()</h1>
+            <h1>@item.DestinationMessage</h1>
+            <!-- Need to find a way to use google maps to geolocate (statically) -->
+        </div>
+    }
+</div>
+
+
+
 <a href="/create/destination/form">Create a Destination here!</a>
