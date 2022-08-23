@@ -16323,6 +16323,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "d:\\Coding Dojo\\Projects\\iTravel\\Views\\Destination\\DestinationForm.cshtml",
+      "TargetPath": "Views\\Destination\\DestinationForm.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\Coding Dojo\\Projects\\iTravel\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"

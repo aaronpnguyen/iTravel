@@ -101,7 +101,10 @@ public class UserController: Controller
     public IActionResult Dashboard()
     {
         if (notLogged) return RedirectToAction("LogReg");
-        return View("Dashboard");
+
+        List<Destination> Destinations = DATABASE.Destinations.ToList();
+
+        return View("Dashboard", Destinations);
     }
 
     [HttpPost("/clear/id")]
