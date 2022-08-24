@@ -109,10 +109,16 @@ public class UserController: Controller
     }
 
     [HttpGet("/user/{id}")]
-    public IActionResult UserProfile()
+    public IActionResult UserProfile(int id = 4)
     {
         if (notLogged) return RedirectToAction("LogReg");
         User? user = DATABASE.Users.FirstOrDefault(u => u.UserId == id);
+        
+        if (user == null)
+        {
+            return View("Error");
+        }
+
         return View("UserProfile", user);
     }
 
