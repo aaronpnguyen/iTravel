@@ -11,8 +11,8 @@ using iTravel.Models;
 namespace iTravel.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20220823204857_DestinationMigration")]
-    partial class DestinationMigration
+    [Migration("20220824063930_Test")]
+    partial class Test
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -70,6 +70,10 @@ namespace iTravel.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("DestinationMessage")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -139,6 +143,10 @@ namespace iTravel.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("ProfilePic")
                         .IsRequired()
                         .HasColumnType("longtext");
 

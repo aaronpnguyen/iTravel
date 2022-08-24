@@ -63,6 +63,7 @@ public class UserController: Controller
         if (!ModelState.IsValid) return LogReg();
         PasswordHasher<User> hashed = new PasswordHasher<User>();
         newUser.Password = hashed.HashPassword(newUser, newUser.Password);
+        newUser.ProfilePic = ""; // Need a default value for a profile pic
         DATABASE.Users.Add(newUser);
         DATABASE.SaveChanges();
 
