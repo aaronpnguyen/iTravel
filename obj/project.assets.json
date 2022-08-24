@@ -733,19 +733,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mikki\\.nuget\\packages\\": {}
+    "C:\\Users\\Aaron\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mikki\\OneDrive\\Desktop\\CodingDojo\\C#\\iTravel\\iTravel\\iTravel.csproj",
+      "projectUniqueName": "D:\\Coding Dojo\\Projects\\iTravel\\iTravel.csproj",
       "projectName": "iTravel",
-      "projectPath": "C:\\Users\\mikki\\OneDrive\\Desktop\\CodingDojo\\C#\\iTravel\\iTravel\\iTravel.csproj",
-      "packagesPath": "C:\\Users\\mikki\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mikki\\OneDrive\\Desktop\\CodingDojo\\C#\\iTravel\\iTravel\\obj\\",
+      "projectPath": "D:\\Coding Dojo\\Projects\\iTravel\\iTravel.csproj",
+      "packagesPath": "C:\\Users\\Aaron\\.nuget\\packages\\",
+      "outputPath": "D:\\Coding Dojo\\Projects\\iTravel\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\mikki\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Aaron\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -805,13 +805,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\mikki\\OneDrive\\Desktop\\CodingDojo\\C#\\iTravel\\iTravel\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }
