@@ -8,61 +8,61 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = iTravel
 build_property.RootNamespace = iTravel
-build_property.ProjectDir = C:\Users\mikki\OneDrive\Desktop\CodingDojo\C#\iTravel\iTravel\
+build_property.ProjectDir = c:\Users\mikki\OneDrive\Desktop\CodingDojo\C#\iTravel\iTravel\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\mikki\OneDrive\Desktop\CodingDojo\C#\iTravel\iTravel
+build_property.MSBuildProjectDirectory = c:\Users\mikki\OneDrive\Desktop\CodingDojo\C#\iTravel\iTravel
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/mikki/OneDrive/Desktop/CodingDojo/C\#/iTravel/iTravel/Views/Destination/DestinationForm.cshtml]
+[c:/Users/mikki/OneDrive/Desktop/CodingDojo/C\#/iTravel/iTravel/Views/Destination/DestinationForm.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVzdGluYXRpb25cRGVzdGluYXRpb25Gb3JtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mikki/OneDrive/Desktop/CodingDojo/C\#/iTravel/iTravel/Views/Home/Index.cshtml]
+[c:/Users/mikki/OneDrive/Desktop/CodingDojo/C\#/iTravel/iTravel/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mikki/OneDrive/Desktop/CodingDojo/C\#/iTravel/iTravel/Views/Home/Privacy.cshtml]
+[c:/Users/mikki/OneDrive/Desktop/CodingDojo/C\#/iTravel/iTravel/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mikki/OneDrive/Desktop/CodingDojo/C\#/iTravel/iTravel/Views/Shared/Dashboard.cshtml]
+[c:/Users/mikki/OneDrive/Desktop/CodingDojo/C\#/iTravel/iTravel/Views/Shared/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXERhc2hib2FyZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mikki/OneDrive/Desktop/CodingDojo/C\#/iTravel/iTravel/Views/Shared/Error.cshtml]
+[c:/Users/mikki/OneDrive/Desktop/CodingDojo/C\#/iTravel/iTravel/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mikki/OneDrive/Desktop/CodingDojo/C\#/iTravel/iTravel/Views/Shared/_ValidationScriptsPartial.cshtml]
+[c:/Users/mikki/OneDrive/Desktop/CodingDojo/C\#/iTravel/iTravel/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mikki/OneDrive/Desktop/CodingDojo/C\#/iTravel/iTravel/Views/User/LogReg.cshtml]
+[c:/Users/mikki/OneDrive/Desktop/CodingDojo/C\#/iTravel/iTravel/Views/User/LogReg.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxMb2dSZWcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mikki/OneDrive/Desktop/CodingDojo/C\#/iTravel/iTravel/Views/User/UserProfile.cshtml]
+[c:/Users/mikki/OneDrive/Desktop/CodingDojo/C\#/iTravel/iTravel/Views/User/UserProfile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyUHJvZmlsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mikki/OneDrive/Desktop/CodingDojo/C\#/iTravel/iTravel/Views/User/_Login.cshtml]
+[c:/Users/mikki/OneDrive/Desktop/CodingDojo/C\#/iTravel/iTravel/Views/User/_Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxfTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mikki/OneDrive/Desktop/CodingDojo/C\#/iTravel/iTravel/Views/User/_Register.cshtml]
+[c:/Users/mikki/OneDrive/Desktop/CodingDojo/C\#/iTravel/iTravel/Views/User/_Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxfUmVnaXN0ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mikki/OneDrive/Desktop/CodingDojo/C\#/iTravel/iTravel/Views/_ViewImports.cshtml]
+[c:/Users/mikki/OneDrive/Desktop/CodingDojo/C\#/iTravel/iTravel/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mikki/OneDrive/Desktop/CodingDojo/C\#/iTravel/iTravel/Views/_ViewStart.cshtml]
+[c:/Users/mikki/OneDrive/Desktop/CodingDojo/C\#/iTravel/iTravel/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mikki/OneDrive/Desktop/CodingDojo/C\#/iTravel/iTravel/Views/Shared/_Layout.cshtml]
+[c:/Users/mikki/OneDrive/Desktop/CodingDojo/C\#/iTravel/iTravel/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-543kfznahy
