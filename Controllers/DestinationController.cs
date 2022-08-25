@@ -45,6 +45,7 @@ public class DestinationController: Controller
         if (!ModelState.IsValid) return DestinationForm();
 
         // Set userId for created destination
+        newDestination.Image = "x"; // Default value for image
         if (id != null) newDestination.UserId = (int)id; // Removes yellow squiggly boy
 
         DATABASE.Destinations.Add(newDestination);
