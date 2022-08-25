@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using iTravel.Models;
 
@@ -10,9 +11,10 @@ using iTravel.Models;
 namespace iTravel.Migrations
 {
     [DbContext(typeof(MyContext))]
-    partial class MyContextModelSnapshot : ModelSnapshot
+    [Migration("20220825011959_UserUpdate")]
+    partial class UserUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -192,13 +194,13 @@ namespace iTravel.Migrations
             modelBuilder.Entity("iTravel.Models.Friend", b =>
                 {
                     b.HasOne("iTravel.Models.User", "UserOne")
-                        .WithMany("FriendsForUserTwo")
+                        .WithMany("UserTwo")
                         .HasForeignKey("UserOneId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("iTravel.Models.User", "UserTwo")
-                        .WithMany("FriendsForUserOne")
+                        .WithMany("UserOne")
                         .HasForeignKey("UserTwoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -212,9 +214,9 @@ namespace iTravel.Migrations
                 {
                     b.Navigation("Comments");
 
-                    b.Navigation("FriendsForUserOne");
+                    b.Navigation("UserOne");
 
-                    b.Navigation("FriendsForUserTwo");
+                    b.Navigation("UserTwo");
                 });
 #pragma warning restore 612, 618
         }

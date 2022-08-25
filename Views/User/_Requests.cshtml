@@ -1,0 +1,13 @@
+@if (ViewBag.User.UserId == Context.Session.GetInt32("id"))
+{
+    foreach(Friend item in ViewBag.Requests)
+    {
+        <label>@item.UserOne.Username</label>
+        <form asp-controller="User" asp-action="AcceptRequest" asp-route-pid="@item.UserOneId" method="post">
+            <button>Accept</button>
+        </form>
+        <form asp-controller="User" asp-action="CancelRequest" asp-route-pid="@item.UserOneId" method="post">
+            <button>Delete</button>
+        </form>
+    }
+}
