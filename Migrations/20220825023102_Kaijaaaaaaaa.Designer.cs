@@ -11,8 +11,8 @@ using iTravel.Models;
 namespace iTravel.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20220823204857_DestinationMigration")]
-    partial class DestinationMigration
+    [Migration("20220825023102_Kaijaaaaaaaa")]
+    partial class Kaijaaaaaaaa
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -70,6 +70,10 @@ namespace iTravel.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("DestinationMessage")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -142,6 +146,9 @@ namespace iTravel.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("ProfilePic")
+                        .HasColumnType("longtext");
+
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
@@ -187,13 +194,13 @@ namespace iTravel.Migrations
             modelBuilder.Entity("iTravel.Models.Friend", b =>
                 {
                     b.HasOne("iTravel.Models.User", "UserOne")
-                        .WithMany()
+                        .WithMany("FriendsForUserTwo")
                         .HasForeignKey("UserOneId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("iTravel.Models.User", "UserTwo")
-                        .WithMany("Friends")
+                        .WithMany("FriendsForUserOne")
                         .HasForeignKey("UserTwoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -207,7 +214,9 @@ namespace iTravel.Migrations
                 {
                     b.Navigation("Comments");
 
-                    b.Navigation("Friends");
+                    b.Navigation("FriendsForUserOne");
+
+                    b.Navigation("FriendsForUserTwo");
                 });
 #pragma warning restore 612, 618
         }

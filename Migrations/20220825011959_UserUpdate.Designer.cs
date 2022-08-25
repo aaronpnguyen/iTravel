@@ -11,8 +11,8 @@ using iTravel.Models;
 namespace iTravel.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20220822082542_DateTimeSet")]
-    partial class DateTimeSet
+    [Migration("20220825011959_UserUpdate")]
+    partial class UserUpdate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -70,6 +70,10 @@ namespace iTravel.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("DestinationMessage")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -142,8 +146,15 @@ namespace iTravel.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("ProfilePic")
+                        .HasColumnType("longtext");
+
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.HasKey("UserId");
 
@@ -183,13 +194,13 @@ namespace iTravel.Migrations
             modelBuilder.Entity("iTravel.Models.Friend", b =>
                 {
                     b.HasOne("iTravel.Models.User", "UserOne")
-                        .WithMany()
+                        .WithMany("UserTwo")
                         .HasForeignKey("UserOneId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("iTravel.Models.User", "UserTwo")
-                        .WithMany("Friends")
+                        .WithMany("UserOne")
                         .HasForeignKey("UserTwoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -203,7 +214,9 @@ namespace iTravel.Migrations
                 {
                     b.Navigation("Comments");
 
-                    b.Navigation("Friends");
+                    b.Navigation("UserOne");
+
+                    b.Navigation("UserTwo");
                 });
 #pragma warning restore 612, 618
         }
