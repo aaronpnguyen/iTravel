@@ -1,6 +1,6 @@
 @if (ViewBag.User.UserId == Context.Session.GetInt32("id"))
 {
-    <h1>This is your profile!</h1>
+    <a href="/edit/user/@ViewBag.User.UserId">Edit your profile</a>
 } else if (ViewBag.Friend == null)
 {
     <form asp-controller="User" asp-action="SendFriendRequest" asp-route-pid="@ViewBag.User.UserId" method="post">

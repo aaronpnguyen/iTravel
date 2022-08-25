@@ -131,10 +131,16 @@ public class UserController: Controller
             .Where(f => (f.UserOneId == id && f.Relationship == "Friends") || (f.UserTwoId == id && f.Relationship == "Friends"))
             .ToList();
 
+        List<Destination> destinations = DATABASE.Destinations
+            .Include(d => d.Creator)
+            .Where(u => u.UserId == pid)
+            .ToList();
+
         ViewBag.User = user;
         ViewBag.Friend = friend;
         ViewBag.Requests = requests;
         ViewBag.ListOfFriends = listOfFriends;
+        ViewBag.Destinations = destinations;
         return View("UserProfile");
     }
 
@@ -173,12 +179,21 @@ public class UserController: Controller
         DATABASE.Friends.Remove(original);
         DATABASE.SaveChanges();
         return RedirectToAction("UserProfile", new {pid = id});
-    }
+        }
 
     [HttpPost("/clear/id")]
     public IActionResult Logout()
     {
         HttpContext.Session.Clear();
         return RedirectToAction("LogReg");
+    }
+
+    [HttpGet("/edit/user/{uid}")]
+    public IActionResult EditUser(int uid)
+    {
+        if (notLogged) return RedirectToAction("LogReg", "User");
+        if (uid != id) return RedirectToAction("UserProfile", new {pid = id});
+        User? user = DATABASE.Users.FirstOrDefault(u => u.UserId == id);
+        return View("EditForm", user);
     }
 }
