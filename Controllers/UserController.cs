@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using iTravel.Models;
 
-namespace WeddingPlanner.Controllers;
+namespace iTravel.Controllers;
 
 public class UserController: Controller
 {
@@ -131,16 +131,18 @@ public class UserController: Controller
             .Where(f => (f.UserOneId == id && f.Relationship == "Friends") || (f.UserTwoId == id && f.Relationship == "Friends"))
             .ToList();
 
-        List<Destination> destinations = DATABASE.Destinations
-            .Include(d => d.Creator)
-            .Where(u => u.UserId == pid)
-            .ToList();
+        // Query to get destinations with friends???
+        // List<Destination> destinations = DATABASE.Destinations
+        //     .Include(u => u.Creator)
+        //     .ThenInclude(u => u.FriendsForUserOne)
+        //     .Where(u => u.UserId == pid)
+        //     .ToList();
 
         ViewBag.User = user;
         ViewBag.Friend = friend;
         ViewBag.Requests = requests;
         ViewBag.ListOfFriends = listOfFriends;
-        ViewBag.Destinations = destinations;
+        // ViewBag.Destinations = destinations;
         return View("UserProfile");
     }
 
@@ -179,7 +181,7 @@ public class UserController: Controller
         DATABASE.Friends.Remove(original);
         DATABASE.SaveChanges();
         return RedirectToAction("UserProfile", new {pid = id});
-        }
+    }
 
     [HttpPost("/clear/id")]
     public IActionResult Logout()
