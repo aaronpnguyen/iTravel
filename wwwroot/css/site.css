@@ -16,3 +16,8 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.profilepicsignedin {
+  border-radius: 50%;
+  width: 150px;
+}

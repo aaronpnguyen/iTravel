@@ -121,4 +121,27 @@ public class UserController: Controller
         HttpContext.Session.Clear();
         return RedirectToAction("LogReg");
     }
+
+    [HttpGet("/edit/{id}")]
+    public IActionResult EditUser(int id)
+    {
+        if (notLogged) return RedirectToAction("LogReg");
+        User? user = DATABASE.Users.FirstOrDefault(u => u.UserId == id);
+        return View("EditUser", user);
+    }
+
+    [HttpPost("/submit/edit/{id}")]
+    public IActionResult SubmitEdit(int id, User editedUser)
+    {
+        User? user = DATABASE.Users.FirstOrDefault(u => u.UserId == id);
+        if(ModelState.IsValid)
+        {
+            Console.WriteLine(editedUser.ProfilePic);
+            user.ProfilePic = editedUser.ProfilePic;
+            DATABASE.SaveChanges();
+            return EditUser(id);
+        }
+        
+        return EditUser(id);
+    }
 }

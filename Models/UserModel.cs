@@ -29,7 +29,7 @@ public class User
     [Display(Name = "Email ")]
     public string Email {get;set;}
 
-    [Display(Name = "Profile Picture: ")]
+    [Display(Name = "Profile Picture ")]
     public string ProfilePic {get; set;}
 
     [Required(ErrorMessage = "is required!")]
