@@ -1,0 +1,14 @@
+@if (ViewBag.User.UserId == Context.Session.GetInt32("id"))
+{
+<h1>Friends:</h1>
+    foreach (Friend item in ViewBag.ListOfFriends)
+    {
+        if (item.UserOneId == Context.Session.GetInt32("id"))
+        {
+            <a href="/user/@item.UserTwoId">@item.UserTwo.Username</a>
+        } else
+        {
+            <a href="/user/@item.UserOneId">@item.UserOne.Username</a>
+        }
+    }
+}
