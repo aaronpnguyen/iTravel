@@ -108,18 +108,71 @@ public class UserController: Controller
         return View("Dashboard", Destinations);
     }
 
-    [HttpGet("/user/{id}")]
-    public IActionResult UserProfile(int id = 4)
+    [HttpGet("/user/{pid}")]
+    public IActionResult UserProfile(int pid)
     {
         if (notLogged) return RedirectToAction("LogReg");
-        User? user = DATABASE.Users.FirstOrDefault(u => u.UserId == id);
-        
-        if (user == null)
-        {
-            return View("Error");
-        }
+        User? user = DATABASE.Users.FirstOrDefault(u => u.UserId == pid);
+        if (user == null) return View("Error");
 
-        return View("UserProfile", user);
+        Friend? friend = DATABASE.Friends
+        .FirstOrDefault(f => (f.UserOneId == pid  && f.UserTwoId == id) || (f.UserOneId == id && f.UserTwoId == pid));
+
+        if (friend == null) ViewBag.Friend = null;
+
+        List<Friend> requests = DATABASE.Friends
+            .Include(f => f.UserOne)
+            .Where(f => f.UserTwoId == id && f.Relationship == "Pending")
+            .ToList();
+
+        List<Friend> listOfFriends = DATABASE.Friends
+            .Include(f => f.UserOne)
+            .Include(f => f.UserTwo)
+            .Where(f => (f.UserOneId == id && f.Relationship == "Friends") || (f.UserTwoId == id && f.Relationship == "Friends"))
+            .ToList();
+
+        ViewBag.User = user;
+        ViewBag.Friend = friend;
+        ViewBag.Requests = requests;
+        ViewBag.ListOfFriends = listOfFriends;
+        return View("UserProfile");
+    }
+
+    [HttpPost("/friend/request/{pid}")]
+    public IActionResult SendFriendRequest(int pid, Friend newFriend)
+    {
+        if (notLogged) return RedirectToAction("LogReg", "User");
+        newFriend.UserOneId = (int)id; // This sets the friend requester to user one
+        newFriend.UserTwoId = pid; // UserTwoId is user we want to be friends with
+        newFriend.Relationship = "Pending"; // Relationship status
+        DATABASE.Friends.Add(newFriend);
+        DATABASE.SaveChanges();
+        return RedirectToAction("UserProfile", new {pid = pid});
+    }
+
+    [HttpPost("/friend/accept/{pid}")]
+    public IActionResult AcceptRequest(int pid, Friend newFriend)
+    {
+        if (notLogged) return RedirectToAction("LogReg", "User");
+        Friend? original = DATABASE.Friends
+            .FirstOrDefault(f => f.UserOneId == pid && f.UserTwoId == id);
+
+        original.Relationship = "Friends";
+        DATABASE.Friends.Update(original);
+        DATABASE.SaveChanges();
+        return RedirectToAction("UserProfile", new {pid = pid});
+    }
+
+    [HttpPost("/friend/cancel/{pid}")]
+    public IActionResult CancelRequest(int pid, Friend newFriend)
+    {
+        if (notLogged) return RedirectToAction("LogReg", "User");
+        Friend? original = DATABASE.Friends
+            .FirstOrDefault(f => (f.UserOneId == id && f.UserTwoId == pid) || (f.UserOneId == pid && f.UserTwoId == id));
+    
+        DATABASE.Friends.Remove(original);
+        DATABASE.SaveChanges();
+        return RedirectToAction("UserProfile", new {pid = id});
     }
 
     [HttpPost("/clear/id")]

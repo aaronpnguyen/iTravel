@@ -11,8 +11,8 @@ using iTravel.Models;
 namespace iTravel.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20220824063930_Test")]
-    partial class Test
+    [Migration("20220825023102_Kaijaaaaaaaa")]
+    partial class Kaijaaaaaaaa
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -147,7 +147,6 @@ namespace iTravel.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("ProfilePic")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -195,13 +194,13 @@ namespace iTravel.Migrations
             modelBuilder.Entity("iTravel.Models.Friend", b =>
                 {
                     b.HasOne("iTravel.Models.User", "UserOne")
-                        .WithMany()
+                        .WithMany("FriendsForUserTwo")
                         .HasForeignKey("UserOneId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("iTravel.Models.User", "UserTwo")
-                        .WithMany("Friends")
+                        .WithMany("FriendsForUserOne")
                         .HasForeignKey("UserTwoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -215,7 +214,9 @@ namespace iTravel.Migrations
                 {
                     b.Navigation("Comments");
 
-                    b.Navigation("Friends");
+                    b.Navigation("FriendsForUserOne");
+
+                    b.Navigation("FriendsForUserTwo");
                 });
 #pragma warning restore 612, 618
         }
