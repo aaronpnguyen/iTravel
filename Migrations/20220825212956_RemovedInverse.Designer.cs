@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using iTravel.Models;
 
@@ -10,9 +11,10 @@ using iTravel.Models;
 namespace iTravel.Migrations
 {
     [DbContext(typeof(MyContext))]
-    partial class MyContextModelSnapshot : ModelSnapshot
+    [Migration("20220825212956_RemovedInverse")]
+    partial class RemovedInverse
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -72,10 +74,6 @@ namespace iTravel.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("Image")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("State")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -195,13 +193,13 @@ namespace iTravel.Migrations
             modelBuilder.Entity("iTravel.Models.Friend", b =>
                 {
                     b.HasOne("iTravel.Models.User", "UserOne")
-                        .WithMany("SentFriends")
+                        .WithMany("UserFriends")
                         .HasForeignKey("UserOneId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("iTravel.Models.User", "UserTwo")
-                        .WithMany("RecievedFriends")
+                        .WithMany()
                         .HasForeignKey("UserTwoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -217,9 +215,7 @@ namespace iTravel.Migrations
 
                     b.Navigation("Destinations");
 
-                    b.Navigation("RecievedFriends");
-
-                    b.Navigation("SentFriends");
+                    b.Navigation("UserFriends");
                 });
 #pragma warning restore 612, 618
         }

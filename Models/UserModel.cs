@@ -28,7 +28,10 @@ public class User
     [EmailAddress]
     [Display(Name = "Email ")]
     public string Email {get;set;}
-    
+
+    [Display(Name = "Profile Picture: ")]
+    public string? ProfilePic {get; set;}
+
     [Required(ErrorMessage = "is required!")]
     [MinLength(8, ErrorMessage = "must contain more than 8 characters!")]
     [DataType(DataType.Password)]
@@ -40,12 +43,29 @@ public class User
     [DataType(DataType.Password)]
     [Display(Name = "Confirm Password ")]
     public string Confirm {get;set;}
+    
+    // [NotMapped]
+    // [Compare("Password", ErrorMessage = "does not match password!")]
+    // [DataType(DataType.Password)]
+    // [Display(Name = "New Password ")]
+    // public string NewPassword {get;set;}
+
+    // [NotMapped]
+    // [Compare("NewPassword", ErrorMessage = "does not match password!")]
+    // [DataType(DataType.Password)]
+    // [Display(Name = "Confirm New Password ")]
+    // public string ConfirmNewPassword {get;set;}
 
     public DateTime CreatedAt {get;set;} = DateTime.Now;
     public DateTime UpdatedAt {get;set;} = DateTime.Now;
 
+    [InverseProperty("UserOne")]
+    public List<Friend> SentFriends {get;set;} = new List<Friend>();
+
     [InverseProperty("UserTwo")]
-    public List<Friend> Friends {get;set;} = new List<Friend>();
+    public List<Friend> RecievedFriends {get;set;} = new List<Friend>();
+
+    public List<Destination> Destinations {get;set;} = new List<Destination>();
     
     public List<Connection> Comments {get;set;} = new List<Connection>();
 

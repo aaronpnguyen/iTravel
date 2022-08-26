@@ -1,0 +1,24 @@
+@model User
+<form class="mx-auto w-50" asp-action="SubmitEdit" asp-controller="User" asp-route-id="@Model.UserId">
+    <h1 class="text-center">Edit your profile</h1>
+    <div class="mx-auto w-50 d-flex flex-column mb-4">
+        @if(Model.ProfilePic == "")
+        {
+            <img src="~/images/defaultprofilepic.png" alt="no img" class="profilepicsignedin mx-auto">
+
+        } else 
+        {
+            <img src="~/images/@Model.ProfilePic" alt="no img" class="profilepicsignedin mx-auto">
+        }
+        <label asp-for="ProfilePic"></label>
+        <span asp-validation-for="ProfilePic"></span>
+        <input class="form-control" type="file">
+    </div>
+    
+    <div class="mx-auto w-25">
+        <label asp-for="Username"></label>
+        <span asp-validation-for="Username" class="text-danger"></span>
+        <input asp-for="Username" class="form-control mb-4" type="text">
+        <button class="btn btn-primary" type="submit">Save Changes</button>
+    </div>
+</form>

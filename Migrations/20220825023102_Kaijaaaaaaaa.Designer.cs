@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using iTravel.Models;
 
@@ -10,9 +11,10 @@ using iTravel.Models;
 namespace iTravel.Migrations
 {
     [DbContext(typeof(MyContext))]
-    partial class MyContextModelSnapshot : ModelSnapshot
+    [Migration("20220825023102_Kaijaaaaaaaa")]
+    partial class Kaijaaaaaaaa
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -72,9 +74,6 @@ namespace iTravel.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("Image")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("State")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -184,7 +183,7 @@ namespace iTravel.Migrations
             modelBuilder.Entity("iTravel.Models.Destination", b =>
                 {
                     b.HasOne("iTravel.Models.User", "Creator")
-                        .WithMany("Destinations")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -195,13 +194,13 @@ namespace iTravel.Migrations
             modelBuilder.Entity("iTravel.Models.Friend", b =>
                 {
                     b.HasOne("iTravel.Models.User", "UserOne")
-                        .WithMany("SentFriends")
+                        .WithMany("FriendsForUserTwo")
                         .HasForeignKey("UserOneId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("iTravel.Models.User", "UserTwo")
-                        .WithMany("RecievedFriends")
+                        .WithMany("FriendsForUserOne")
                         .HasForeignKey("UserTwoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -215,11 +214,9 @@ namespace iTravel.Migrations
                 {
                     b.Navigation("Comments");
 
-                    b.Navigation("Destinations");
+                    b.Navigation("FriendsForUserOne");
 
-                    b.Navigation("RecievedFriends");
-
-                    b.Navigation("SentFriends");
+                    b.Navigation("FriendsForUserTwo");
                 });
 #pragma warning restore 612, 618
         }

@@ -13,10 +13,18 @@ public class Destination
     public string City {get;set;}
 
     [Required]
-    public string Country {get;set;}
+    [Display(Name = "State/Province")]
+    public string State {get;set;}
 
     [Required]
+    public string Country {get;set;}
+
+    [Display(Name = "Caption ")]
+    [Required]
     public string DestinationMessage {get;set;}
+
+    [Display(Name = "Image: ")]
+    public string? Image {get; set;}
 
     public DateTime CreatedAt {get;set;} = DateTime.Now;
     public DateTime UpdatedAt {get;set;} = DateTime.Now;
@@ -25,8 +33,14 @@ public class Destination
     public User? Creator {get;set;}
 
 
+
     public string Place()
     {
         return $"{City}, {Country}";
+    }
+
+    public string Query()
+    {
+        return $"{City}+{State}+{Country}";
     }
 }
