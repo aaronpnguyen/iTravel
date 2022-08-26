@@ -2,6 +2,9 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 using iTravel.Models;
 
 namespace iTravel.Controllers;
@@ -191,7 +194,7 @@ public class UserController: Controller
         return RedirectToAction("LogReg");
     }
 
-<<<<<<< HEAD
+
     [HttpGet("/edit/user/{uid}")]
     public IActionResult EditUser(int uid)
     {
@@ -199,28 +202,32 @@ public class UserController: Controller
         if (uid != id) return RedirectToAction("UserProfile", new {pid = id});
         User? user = DATABASE.Users.FirstOrDefault(u => u.UserId == id);
         return View("EditForm", user);
-=======
-    [HttpGet("/edit/{id}")]
-    public IActionResult EditUser(int id)
-    {
-        if (notLogged) return RedirectToAction("LogReg");
-        User? user = DATABASE.Users.FirstOrDefault(u => u.UserId == id);
-        return View("EditUser", user);
     }
 
-    [HttpPost("/submit/edit/{id}")]
-    public IActionResult SubmitEdit(int id, User editedUser)
-    {
-        User? user = DATABASE.Users.FirstOrDefault(u => u.UserId == id);
-        if(ModelState.IsValid)
-        {
-            Console.WriteLine(editedUser.ProfilePic);
-            user.ProfilePic = editedUser.ProfilePic;
-            DATABASE.SaveChanges();
-            return EditUser(id);
-        }
+    // [HttpPost("/submit/edit/{uid}")]
+    // public IActionResult SubmitEdit(int uid, User updatedUser)
+    // {
+    //     if (notLogged) return RedirectToAction("LogReg", "User");
+    //     if (uid != id) return RedirectToAction("UserProfile", new {pid = id});
+
+    //     User? original = DATABASE.Users.FirstOrDefault(u => u.UserId == uid);
+
+    //     if (!ModelState.IsValid)
+    //     {
+
+    //     }
         
-        return EditUser(id);
->>>>>>> Kaija's-Branch
-    }
+
+    //     PasswordHasher<User> hasher = new PasswordHasher<User>();
+    //     PasswordVerificationResult validator = hasher.VerifyHashedPassword(updatedUser, original.Password, updatedUser.Password);
+    //     if (validator == 0)
+    //     {
+    //         ModelState.AddModelError("Password", "is incorrect");
+    //         return EditUser((int)id);
+    //     }
+    //     PasswordHasher<User> hashed = new PasswordHasher<User>();
+    //     updatedUser.Password = hashed.HashPassword(updatedUser, updatedUser.NewPassword);
+
+    //     return RedirectToAction("UserProfile", new {pid = id});
+    // }
 }
