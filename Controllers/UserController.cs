@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using iTravel.Models;
 
-namespace WeddingPlanner.Controllers;
+namespace iTravel.Controllers;
 
 public class UserController: Controller
 {
@@ -63,7 +63,7 @@ public class UserController: Controller
         if (!ModelState.IsValid) return LogReg();
         PasswordHasher<User> hashed = new PasswordHasher<User>();
         newUser.Password = hashed.HashPassword(newUser, newUser.Password);
-        newUser.ProfilePic = ""; // Need a default value for a profile pic
+        newUser.ProfilePic = "profile-default-svgrepo-com.svg"; // Need a default value for a profile pic
         DATABASE.Users.Add(newUser);
         DATABASE.SaveChanges();
 
@@ -103,9 +103,12 @@ public class UserController: Controller
     {
         if (notLogged) return RedirectToAction("LogReg");
 
-        List<Destination> Destinations = DATABASE.Destinations.Include(u => u.Creator).ToList();
+        List<Destination> destinations = DATABASE.Destinations
+            .Include(u => u.Creator)
+            .OrderByDescending(d => d.CreatedAt)
+            .ToList();
 
-        return View("Dashboard", Destinations);
+        return View("Dashboard", destinations);
     }
 
     [HttpGet("/user/{pid}")]
@@ -128,13 +131,19 @@ public class UserController: Controller
         List<Friend> listOfFriends = DATABASE.Friends
             .Include(f => f.UserOne)
             .Include(f => f.UserTwo)
-            .Where(f => (f.UserOneId == id && f.Relationship == "Friends") || (f.UserTwoId == id && f.Relationship == "Friends"))
+            .Where(f => (f.UserOneId == pid && f.Relationship == "Friends") || (f.UserTwoId == pid && f.Relationship == "Friends"))
+            .ToList();
+        
+        List<Destination> destinations = DATABASE.Destinations
+            .Include(d => d.Creator)
+            .Where(u => u.UserId == pid)
             .ToList();
 
         ViewBag.User = user;
         ViewBag.Friend = friend;
         ViewBag.Requests = requests;
         ViewBag.ListOfFriends = listOfFriends;
+        ViewBag.Destinations = destinations;
         return View("UserProfile");
     }
 
@@ -180,5 +189,14 @@ public class UserController: Controller
     {
         HttpContext.Session.Clear();
         return RedirectToAction("LogReg");
+    }
+
+    [HttpGet("/edit/user/{uid}")]
+    public IActionResult EditUser(int uid)
+    {
+        if (notLogged) return RedirectToAction("LogReg", "User");
+        if (uid != id) return RedirectToAction("UserProfile", new {pid = id});
+        User? user = DATABASE.Users.FirstOrDefault(u => u.UserId == id);
+        return View("EditForm", user);
     }
 }

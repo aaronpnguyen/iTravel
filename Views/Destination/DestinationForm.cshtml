@@ -1,7 +1,8 @@
 @model Destination
+
 <h1>Destination Form</h1>
 
-<form asp-controller="Destination" asp-action="SubmitDestination" method="post">
+<form asp-controller="Destination" enctype="multipart/form-data" asp-action="SubmitDestination" method="post">
     <div>
         <div class="validations">
             <label asp-for="City"></label>
@@ -18,13 +19,13 @@
         <input class="form-control w-25 mb-3" asp-for="Country">
     </div>
     @* impliment images l8r *@
-    @* <div>
+    <div>
         <div class="validations">
             <label asp-for="Image"></label>
             <span style="color: red;" asp-validation-for="Image"></span>
         </div>
-        <input asp-for="Image" type="file" class="form-control w-25 mb-3" >
-    </div> *@
+        <input name="file" type="file" class="form-control w-25 mb-3" >
+    </div>
 
     <div>
         <div class="validations">
