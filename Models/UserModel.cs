@@ -48,10 +48,12 @@ public class User
     public DateTime UpdatedAt {get;set;} = DateTime.Now;
 
     [InverseProperty("UserOne")]
-    public List<Friend> FriendsForUserTwo {get;set;} = new List<Friend>();
-    
+    public List<Friend> SentFriends {get;set;} = new List<Friend>();
+
     [InverseProperty("UserTwo")]
-    public List<Friend> FriendsForUserOne {get;set;} = new List<Friend>();
+    public List<Friend> RecievedFriends {get;set;} = new List<Friend>();
+
+    public List<Destination> Destinations {get;set;} = new List<Destination>();
     
     public List<Connection> Comments {get;set;} = new List<Connection>();
 
