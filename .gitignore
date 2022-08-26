@@ -362,7 +362,15 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
+<<<<<<< HEAD
+.env
+ProfilePictures
+=======
 .bin/
 .obj/
 .env
+<<<<<<< HEAD
 uploads/
+=======
+>>>>>>> Test-Branch
+>>>>>>> Kaija's-Branch
