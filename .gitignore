@@ -366,4 +366,4 @@ FodyWeavers.xsd
 .obj/
 .env
 uploads/
-
+Migrations/
