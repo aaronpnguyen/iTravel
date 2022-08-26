@@ -7,7 +7,6 @@
 @foreach(Destination item in ViewBag.Destinations)
 {
     <div class="card mb-5 p-3">
-        <h1>@item.Creator</h1>
         <h1>@item.Creator.Username</h1>
         <h1>@item.Place()</h1>
         <h1>@item.DestinationMessage</h1>

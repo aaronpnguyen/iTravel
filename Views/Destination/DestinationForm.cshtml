@@ -13,6 +13,14 @@
 
     <div>
         <div class="validations">
+            <label asp-for="State"></label>
+            <span style="color: red;" asp-validation-for="State"></span>
+        </div>
+        <input class="form-control w-25 mb-3" asp-for="State">
+    </div>
+
+    <div>
+        <div class="validations">
             <label asp-for="Country"></label>
             <span style="color: red;" asp-validation-for="Country"></span>
         </div>

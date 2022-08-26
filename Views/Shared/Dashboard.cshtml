@@ -13,7 +13,16 @@
             <h3>@item.Place()</h3>
             <h4>@item.DestinationMessage</h4>
             <h5><a href="/user/@item.Creator.UserId">@item.Creator.Username</a></h5>
-            <!-- Need to find a way to use google maps to geolocate (statically) -->
+            <iframe
+                width="300"
+                height="225"
+                style="border:0"
+                loading="lazy"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCX7AQEGR_2IfhlXbx9bTlKUPLVd-0b10Y
+                &q=@item.Query()">
+            </iframe>
         </div>
     }
 </div>
