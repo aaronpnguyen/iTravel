@@ -13,6 +13,10 @@ public class Destination
     public string City {get;set;}
 
     [Required]
+    [Display(Name = "State/Province")]
+    public string State {get;set;}
+
+    [Required]
     public string Country {get;set;}
 
     [Display(Name = "Caption ")]
@@ -33,5 +37,10 @@ public class Destination
     public string Place()
     {
         return $"{City}, {Country}";
+    }
+
+    public string Query()
+    {
+        return $"{City}+{State}+{Country}";
     }
 }
