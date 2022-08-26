@@ -44,17 +44,17 @@ public class User
     [Display(Name = "Confirm Password ")]
     public string Confirm {get;set;}
     
-    [NotMapped]
-    [Compare("Password", ErrorMessage = "does not match password!")]
-    [DataType(DataType.Password)]
-    [Display(Name = "New Password ")]
-    public string NewPassword {get;set;}
+    // [NotMapped]
+    // [Compare("Password", ErrorMessage = "does not match password!")]
+    // [DataType(DataType.Password)]
+    // [Display(Name = "New Password ")]
+    // public string NewPassword {get;set;}
 
-    [NotMapped]
-    [Compare("NewPassword", ErrorMessage = "does not match password!")]
-    [DataType(DataType.Password)]
-    [Display(Name = "Confirm New Password ")]
-    public string ConfirmNewPassword {get;set;}
+    // [NotMapped]
+    // [Compare("NewPassword", ErrorMessage = "does not match password!")]
+    // [DataType(DataType.Password)]
+    // [Display(Name = "Confirm New Password ")]
+    // public string ConfirmNewPassword {get;set;}
 
     public DateTime CreatedAt {get;set;} = DateTime.Now;
     public DateTime UpdatedAt {get;set;} = DateTime.Now;
