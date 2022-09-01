@@ -2,9 +2,12 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 using iTravel.Models;
 
-namespace WeddingPlanner.Controllers;
+namespace iTravel.Controllers;
 
 public class UserController: Controller
 {
@@ -63,6 +66,7 @@ public class UserController: Controller
         if (!ModelState.IsValid) return LogReg();
         PasswordHasher<User> hashed = new PasswordHasher<User>();
         newUser.Password = hashed.HashPassword(newUser, newUser.Password);
+        newUser.ProfilePic = "profile-default-svgrepo-com.svg"; // Need a default value for a profile pic
         DATABASE.Users.Add(newUser);
         DATABASE.SaveChanges();
 
@@ -102,9 +106,85 @@ public class UserController: Controller
     {
         if (notLogged) return RedirectToAction("LogReg");
 
-        List<Destination> Destinations = DATABASE.Destinations.ToList();
+        List<Destination> destinations = DATABASE.Destinations
+            .Include(u => u.Creator)
+            .OrderByDescending(d => d.CreatedAt)
+            .ToList();
 
-        return View("Dashboard", Destinations);
+        return View("Dashboard", destinations);
+    }
+
+    [HttpGet("/user/{pid}")]
+    public IActionResult UserProfile(int pid)
+    {
+        if (notLogged) return RedirectToAction("LogReg");
+        User? user = DATABASE.Users.FirstOrDefault(u => u.UserId == pid);
+        if (user == null) return View("Error");
+
+        Friend? friend = DATABASE.Friends
+        .FirstOrDefault(f => (f.UserOneId == pid  && f.UserTwoId == id) || (f.UserOneId == id && f.UserTwoId == pid));
+
+        if (friend == null) ViewBag.Friend = null;
+
+        List<Friend> requests = DATABASE.Friends
+            .Include(f => f.UserOne)
+            .Where(f => f.UserTwoId == id && f.Relationship == "Pending")
+            .ToList();
+
+        List<Friend> listOfFriends = DATABASE.Friends
+            .Include(f => f.UserOne)
+            .Include(f => f.UserTwo)
+            .Where(f => (f.UserOneId == pid && f.Relationship == "Friends") || (f.UserTwoId == pid && f.Relationship == "Friends"))
+            .ToList();
+        
+        List<Destination> destinations = DATABASE.Destinations
+            .Include(d => d.Creator)
+            .Where(u => u.UserId == pid)
+            .ToList();
+
+        ViewBag.User = user;
+        ViewBag.Friend = friend;
+        ViewBag.Requests = requests;
+        ViewBag.ListOfFriends = listOfFriends;
+        ViewBag.Destinations = destinations;
+        return View("UserProfile");
+    }
+
+    [HttpPost("/friend/request/{pid}")]
+    public IActionResult SendFriendRequest(int pid, Friend newFriend)
+    {
+        if (notLogged) return RedirectToAction("LogReg", "User");
+        newFriend.UserOneId = (int)id; // This sets the friend requester to user one
+        newFriend.UserTwoId = pid; // UserTwoId is user we want to be friends with
+        newFriend.Relationship = "Pending"; // Relationship status
+        DATABASE.Friends.Add(newFriend);
+        DATABASE.SaveChanges();
+        return RedirectToAction("UserProfile", new {pid = pid});
+    }
+
+    [HttpPost("/friend/accept/{pid}")]
+    public IActionResult AcceptRequest(int pid, Friend newFriend)
+    {
+        if (notLogged) return RedirectToAction("LogReg", "User");
+        Friend? original = DATABASE.Friends
+            .FirstOrDefault(f => f.UserOneId == pid && f.UserTwoId == id);
+
+        original.Relationship = "Friends";
+        DATABASE.Friends.Update(original);
+        DATABASE.SaveChanges();
+        return RedirectToAction("UserProfile", new {pid = pid});
+    }
+
+    [HttpPost("/friend/cancel/{pid}")]
+    public IActionResult CancelRequest(int pid, Friend newFriend)
+    {
+        if (notLogged) return RedirectToAction("LogReg", "User");
+        Friend? original = DATABASE.Friends
+            .FirstOrDefault(f => (f.UserOneId == id && f.UserTwoId == pid) || (f.UserOneId == pid && f.UserTwoId == id));
+    
+        DATABASE.Friends.Remove(original);
+        DATABASE.SaveChanges();
+        return RedirectToAction("UserProfile", new {pid = id});
     }
 
     [HttpPost("/clear/id")]
@@ -113,4 +193,41 @@ public class UserController: Controller
         HttpContext.Session.Clear();
         return RedirectToAction("LogReg");
     }
+
+
+    [HttpGet("/edit/user/{uid}")]
+    public IActionResult EditUser(int uid)
+    {
+        if (notLogged) return RedirectToAction("LogReg", "User");
+        if (uid != id) return RedirectToAction("UserProfile", new {pid = id});
+        User? user = DATABASE.Users.FirstOrDefault(u => u.UserId == id);
+        return View("EditForm", user);
+    }
+
+    // [HttpPost("/submit/edit/{uid}")]
+    // public IActionResult SubmitEdit(int uid, User updatedUser)
+    // {
+    //     if (notLogged) return RedirectToAction("LogReg", "User");
+    //     if (uid != id) return RedirectToAction("UserProfile", new {pid = id});
+
+    //     User? original = DATABASE.Users.FirstOrDefault(u => u.UserId == uid);
+
+    //     if (!ModelState.IsValid)
+    //     {
+
+    //     }
+        
+
+    //     PasswordHasher<User> hasher = new PasswordHasher<User>();
+    //     PasswordVerificationResult validator = hasher.VerifyHashedPassword(updatedUser, original.Password, updatedUser.Password);
+    //     if (validator == 0)
+    //     {
+    //         ModelState.AddModelError("Password", "is incorrect");
+    //         return EditUser((int)id);
+    //     }
+    //     PasswordHasher<User> hashed = new PasswordHasher<User>();
+    //     updatedUser.Password = hashed.HashPassword(updatedUser, updatedUser.NewPassword);
+
+    //     return RedirectToAction("UserProfile", new {pid = id});
+    // }
 }

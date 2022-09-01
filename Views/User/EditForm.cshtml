@@ -1,0 +1,38 @@
+@model User
+<form class="mx-auto w-50" asp-action="SubmitEdit" asp-controller="User" asp-route-uid="@Model.UserId">
+    <h1 class="text-center">Edit your profile</h1>
+    <div class="mx-auto w-50 d-flex flex-column mb-4">
+        <img src="~/uploads/@Model.ProfilePic" alt="UserImage" class="profilepicsignedin mx-auto">
+        <label asp-for="ProfilePic"></label>
+        <span asp-validation-for="ProfilePic"></span>
+        <input class="form-control" type="file">
+    </div>
+    
+    <div class="mx-auto w-25">
+        <label asp-for="Username"></label>
+        <span asp-validation-for="Username" class="text-danger"></span>
+        <input asp-for="Username" class="form-control mb-4">
+    </div>
+    <div class="mx-auto w-25">
+        <label asp-for="Email"></label>
+        <span asp-validation-for="Email" class="text-danger"></span>
+        <input asp-for="Email" class="form-control mb-4">
+    </div>
+    <div class="mx-auto w-25">
+        <label asp-for="Password"></label>
+        <span asp-validation-for="Password" class="text-danger"></span>
+        <input asp-for="Password" class="form-control mb-4">
+    </div>
+    @* <div class="mx-auto w-25">
+        <label asp-for="NewPassword"></label>
+        <span asp-validation-for="NewPassword" class="text-danger"></span>
+        <input asp-for="NewPassword" class="form-control mb-4">
+    </div>
+    <div class="mx-auto w-25">
+        <label asp-for="ConfirmNewPassword"></label>
+        <span asp-validation-for="ConfirmNewPassword" class="text-danger"></span>
+        <input asp-for="ConfirmNewPassword" class="form-control mb-4">
+    </div> *@
+    <button class="btn btn-primary" type="submit">Save Changes</button>
+    <!--Need to continue, commented out the post method so this doesn't work anymore-->
+</form>
