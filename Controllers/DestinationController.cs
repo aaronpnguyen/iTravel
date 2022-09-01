@@ -48,8 +48,10 @@ public class DestinationController: Controller
     public IActionResult SubmitDestination(IFormFile file, Destination newDestination)
     {
         if (notLogged) return RedirectToAction("LogReg", "User");
+
+        if (newDestination.State == null) newDestination.State = "";
         
-        if (newDestination.City == null || newDestination.State == null || newDestination.Country == null || newDestination.DestinationMessage == null) return DestinationForm();
+        if (newDestination.City == null || newDestination.Country == null || newDestination.DestinationMessage == null) return DestinationForm();
         
         if (file != null)
         {
