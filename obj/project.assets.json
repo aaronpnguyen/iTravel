@@ -705,19 +705,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Aaron\\.nuget\\packages\\": {}
+    "C:\\Users\\mikki\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Coding Dojo\\Projects\\iTravel\\iTravel.csproj",
+      "projectUniqueName": "c:\\Users\\mikki\\OneDrive\\Desktop\\CodingDojo\\C#\\iTravel\\iTravel\\iTravel.csproj",
       "projectName": "iTravel",
-      "projectPath": "D:\\Coding Dojo\\Projects\\iTravel\\iTravel.csproj",
-      "packagesPath": "C:\\Users\\Aaron\\.nuget\\packages\\",
-      "outputPath": "D:\\Coding Dojo\\Projects\\iTravel\\obj\\",
+      "projectPath": "c:\\Users\\mikki\\OneDrive\\Desktop\\CodingDojo\\C#\\iTravel\\iTravel\\iTravel.csproj",
+      "packagesPath": "C:\\Users\\mikki\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\mikki\\OneDrive\\Desktop\\CodingDojo\\C#\\iTravel\\iTravel\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Aaron\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\mikki\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
