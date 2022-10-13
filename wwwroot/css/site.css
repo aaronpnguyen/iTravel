@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Open+Sans:wght@300&display=swap');
+
+* {
+  font-family: 'Inter', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  background-image: linear-gradient(#ff6f91, #ff9fb5);
+}
+
 html {
   font-size: 14px;
 }
@@ -22,7 +33,23 @@ body {
   width: 150px;
 }
 
-.Post {
-  background-color: rgba(231, 208, 253, 0.637);
+.btn-primary {
+  color: #fff;
+  background-color: #ff83a0;
+  border-color: #fc819e;
+}
 
+.btn-primary:hover {
+  color: #fff;
+  background-color: #ff7595;
+  border-color: #fc819e;
+}
+
+.Post {
+  background-color: #FF884B;
+  border: 1px solid #fe925c;
+}
+
+.h-test {
+  height: 470px;
 }

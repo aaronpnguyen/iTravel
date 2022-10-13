@@ -1,46 +1,55 @@
 @model Destination
 
-<h1>Destination Form</h1>
+<div class="d-flex justify-content-between w-75 mx-auto">
+    <div class="form">
+        <h1>Make a post!</h1>
 
-<form asp-controller="Destination" enctype="multipart/form-data" asp-action="SubmitDestination" method="post">
-    <div>
-        <div class="validations">
-            <label asp-for="City"></label>
-            <span style="color: red;" asp-validation-for="City"></span>
-        </div>
-        <input class="form-control w-25 mb-3" asp-for="City">
-    </div>
+        <form asp-controller="Destination" enctype="multipart/form-data" asp-action="SubmitDestination" method="post">
+            <div>
+                <div class="validations">
+                    <label asp-for="City"></label>
+                    <span style="color: red;" asp-validation-for="City"></span>
+                </div>
+                <input class="form-control mb-3" asp-for="City">
+            </div>
 
-    <div>
-        <div class="validations">
-            <label asp-for="State"></label>
-            <span style="color: red;" asp-validation-for="State"></span>
-        </div>
-        <input class="form-control w-25 mb-3" asp-for="State">
-    </div>
+            <div>
+                <div class="validations">
+                    <label asp-for="State"></label>
+                    <span style="color: red;" asp-validation-for="State"></span>
+                </div>
+                <input class="form-control mb-3" asp-for="State">
+            </div>
 
-    <div>
-        <div class="validations">
-            <label asp-for="Country"></label>
-            <span style="color: red;" asp-validation-for="Country"></span>
-        </div>
-        <input class="form-control w-25 mb-3" asp-for="Country">
-    </div>
-    @* impliment images l8r *@
-    <div>
-        <div class="validations">
-            <label asp-for="Image"></label>
-            <span style="color: red;" asp-validation-for="Image"></span>
-        </div>
-        <input name="file" type="file" class="form-control w-25 mb-3" >
-    </div>
+            <div>
+                <div class="validations">
+                    <label asp-for="Country"></label>
+                    <span style="color: red;" asp-validation-for="Country"></span>
+                </div>
+                <input class="form-control mb-3" asp-for="Country">
+            </div>
+            <div>
+                <div class="validations">
+                    <label asp-for="Image"></label>
+                    <span style="color: red;" asp-validation-for="Image"></span>
+                </div>
+                <input name="file" type="file" class="form-control mb-3" >
+            </div>
 
-    <div>
-        <div class="validations">
-            <label asp-for="DestinationMessage"></label>
-            <span style="color: red;" asp-validation-for="DestinationMessage"></span>
-        </div>
-        <textarea class="form-control w-25" asp-for="DestinationMessage"></textarea>
+            <div>
+                <div class="validations">
+                    <label asp-for="DestinationMessage"></label>
+                    <span style="color: red;" asp-validation-for="DestinationMessage"></span>
+                </div>
+                <textarea class="form-control" asp-for="DestinationMessage"></textarea>
+            </div>
+            <button class="btn btn-primary mt-3">Submit</button>
+        </form>
     </div>
-    <button class="btn btn-primary mt-3">Submit</button>
-</form>
+    <div class="post-generation">
+        <h1>view post before posting</h1>
+        <div class="Post h-test">
+
+        </div>
+    </div>
+</div>

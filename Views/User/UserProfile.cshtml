@@ -1,17 +1,39 @@
-<div class="card">
-    <img src="~/uploads/@ViewBag.User.ProfilePic" style="width: 100px;" alt="@ViewBag.User.ProfilePic">
-    <h1>@ViewBag.User.Username</h1>
-    <partial name="_Friend"/>
-</div>
+<div class="profile-container w-50 mx-auto">
 
-@foreach(Destination item in ViewBag.Destinations)
-{
-    <div class="card mb-5 p-3">
-        <h1>@item.Creator.Username</h1>
-        <h1>@item.Place()</h1>
-        <h1>@item.DestinationMessage</h1>
+    <div class="card mb-4">
+        <img src="~/uploads/@ViewBag.User.ProfilePic" style="width: 100px;" alt="@ViewBag.User.ProfilePic">
+        <h1>@ViewBag.User.Username</h1>
+        <partial name="_Friend"/>
     </div>
-}
+    <partial name="_Requests"/> 
+    <partial name="_ListOfFriends"/>
 
-<partial name="_Requests"/> 
-<partial name="_ListOfFriends"/>
+    @foreach(Destination item in ViewBag.Destinations)
+    {
+        <div class="Post mb-5 p-3">
+                <div class="img_map d-flex justify-content-between mb-3">
+                    @if(item.Image.Length > 3)
+                    {
+                        <img src="~/uploads/@item.Image" style="width: 300px;" alt="@item.Image">
+                    }
+                    <div class="location">
+                        <iframe
+                            width="275"
+                            height="225"
+                            style="border:0"
+                            loading="lazy"
+                            allowfullscreen
+                            referrerpolicy="no-referrer-when-downgrade"
+                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC---njpOqPkCYvMRYE-MxexQWdqC_s_h4
+                            &q=@item.Query()">
+                        </iframe>
+                        <h4 class="word-wrap">@item.Place()</h4>
+                    </div>
+                    
+                </div>
+                <h5><a href="/user/@item.Creator.UserId">@item.Creator.Username</a></h5>
+                <h6>@item.DestinationMessage</h6>
+            </div>
+    }
+
+</div>
