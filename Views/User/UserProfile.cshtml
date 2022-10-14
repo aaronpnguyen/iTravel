@@ -1,9 +1,11 @@
 <div class="profile-container w-50 mx-auto">
 
-    <div class="card mb-4">
-        <img src="~/uploads/@ViewBag.User.ProfilePic" style="width: 100px;" alt="@ViewBag.User.ProfilePic">
-        <h1>@ViewBag.User.Username</h1>
-        <partial name="_Friend"/>
+    <div class="d-flex align-items-center justify-content-center mb-4 text-center">
+        <div>
+            <img src="~/uploads/@ViewBag.User.ProfilePic" style="width: 100px;" alt="@ViewBag.User.ProfilePic">
+            <h1>@ViewBag.User.Username</h1>
+            <partial name="_Friend"/>
+        </div>
     </div>
     <partial name="_Requests"/> 
     <partial name="_ListOfFriends"/>
@@ -27,12 +29,12 @@
                             src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC---njpOqPkCYvMRYE-MxexQWdqC_s_h4
                             &q=@item.Query()">
                         </iframe>
-                        <h4 class="word-wrap">@item.Place()</h4>
+                        <h4 class="word-wrap text-center">@item.Place()</h4>
+                        <h5 class="mt-4"><a href="/user/@item.Creator.UserId">@item.Creator.Username</a></h5>
+                        <h6>@item.DestinationMessage</h6>
                     </div>
                     
                 </div>
-                <h5><a href="/user/@item.Creator.UserId">@item.Creator.Username</a></h5>
-                <h6>@item.DestinationMessage</h6>
             </div>
     }
 

@@ -2,7 +2,9 @@
 
 
 <div class="PostContainer mx-auto w-50">
-    <a href="/create/destination/form" class="btn btn-primary mx-auto mb-4">Make a post!</a>
+    <div class="d-flex justify-content-between align-items-center">
+        <a href="/create/destination/form" class="btn btn-primary mx-auto mb-4">Make a post!</a>
+    </div>
     @foreach (Destination item in Model)
     {
         <div class="Post mb-5 p-3">

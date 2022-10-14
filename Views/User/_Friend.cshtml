@@ -1,6 +1,6 @@
 @if (ViewBag.User.UserId == Context.Session.GetInt32("id"))
 {
-        <a href="/edit/user/@ViewBag.User.UserId"> <button class="btn btn-primary"> Edit your profile</button></a>
+        <a href="/edit/user/@ViewBag.User.UserId"> <button class="btn btn-primary mt-2"> Edit profile</button></a>
 } 
 else if (ViewBag.Friend == null)
 {
@@ -10,7 +10,6 @@ else if (ViewBag.Friend == null)
 } 
 else if ((ViewBag.Friend.UserOneId == Context.Session.GetInt32("id") && ViewBag.Friend.Relationship == "Friends") || (ViewBag.Friend.UserTwoId == Context.Session.GetInt32("id") && ViewBag.Friend.Relationship == "Friends"))
 {
-    <h1>You guys are friends!</h1>
     <form asp-controller="User" asp-action="CancelRequest" asp-route-pid=@ViewBag.User.UserId method="post">
         <button class="btn btn-danger">Remove Friend</button>
     </form>

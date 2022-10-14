@@ -1,12 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Open+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 * {
-  font-family: 'Inter', sans-serif;
   font-family: 'Open Sans', sans-serif;
+  color: #e5e5e5;
 }
 
 body {
-  background-image: linear-gradient(#ff6f91, #ff9fb5);
+  margin-bottom: 60px;
+  background-image: linear-gradient(#2C3639, #3F4E4F);
 }
 
 html {
@@ -24,10 +25,6 @@ html {
   min-height: 100%;
 }
 
-body {
-  margin-bottom: 60px;
-}
-
 .profilepicsignedin {
   border-radius: 50%;
   width: 150px;
@@ -35,19 +32,44 @@ body {
 
 .btn-primary {
   color: #fff;
-  background-color: #ff83a0;
-  border-color: #fc819e;
+  background-color: #A27B5C;
+  border-color: #3F4E4F;
 }
 
 .btn-primary:hover {
-  color: #fff;
-  background-color: #ff7595;
-  border-color: #fc819e;
+  color: black;
+  background-color: #DCD7C9;
+  border-color: #4c5354;
+}
+
+.btn-danger {
+  background-color: #b12836;
+  /* border-color: #3F4E4F; */
+}
+
+.btn-danger:hover {
+  background-color: #e14d5c;
+}
+
+.btn-success {
+  background-color: #16603d;
+  border-color: #3F4E4F;
 }
 
 .Post {
-  background-color: #FF884B;
-  border: 1px solid #fe925c;
+  background-color: #A27B5C;
+  border: 1px solid #DCD7C9;
+  color: #3F4E4F;
+}
+
+.location a {
+  text-decoration: none;
+  color: #3F4E4F;
+
+}
+
+.location h6 {
+  margin-left: 15px;
 }
 
 .h-test {
