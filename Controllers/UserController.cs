@@ -34,10 +34,12 @@ public class UserController: Controller
         DATABASE = context;
     }
     
-    [HttpGet("/")]
+    [HttpGet("/login/register")]
     public IActionResult LogReg()
     {
         if (!notLogged) return RedirectToAction("Dashboard");
+        List<User> users = DATABASE.Users.ToList();
+        ViewBag.Users = users;
         return View("LogReg");
     }
 
@@ -71,6 +73,10 @@ public class UserController: Controller
         DATABASE.SaveChanges();
 
         HttpContext.Session.SetInt32("id", newUser.UserId);
+        HttpContext.Session.SetString("username", newUser.Username);
+        List<User> users = DATABASE.Users.ToList();
+        ViewBag.Users = users;
+
         return RedirectToAction("Dashboard");
     }
 
@@ -98,14 +104,28 @@ public class UserController: Controller
             return LogReg();
         }
         HttpContext.Session.SetInt32("id", user.UserId);
+        HttpContext.Session.SetString("username", user.Username);
+        List<User> users = DATABASE.Users.ToList();
+        ViewBag.Users = users;
+
         return RedirectToAction("Dashboard");
     }
 
-    [HttpGet("/dashboard")]
+    [HttpGet("/")]
     public IActionResult Dashboard()
     {
-        if (notLogged) return RedirectToAction("LogReg");
+        if(!notLogged)
+        {
+            HttpContext.Session.SetInt32("notLogged", 1);
+        }
+        else 
+        {
+            HttpContext.Session.SetInt32("notLogged", 0);
+        }
 
+        List<User> users = DATABASE.Users.ToList();
+        ViewBag.Users = users;
+        
         List<Destination> destinations = DATABASE.Destinations
             .Include(u => u.Creator)
             .OrderByDescending(d => d.CreatedAt)
@@ -117,7 +137,6 @@ public class UserController: Controller
     [HttpGet("/user/{pid}")]
     public IActionResult UserProfile(int pid)
     {
-        if (notLogged) return RedirectToAction("LogReg");
         User? user = DATABASE.Users.FirstOrDefault(u => u.UserId == pid);
         if (user == null) return View("Error");
 
@@ -141,7 +160,8 @@ public class UserController: Controller
             .Include(d => d.Creator)
             .Where(u => u.UserId == pid)
             .ToList();
-
+        List<User> users = DATABASE.Users.ToList();
+        ViewBag.Users = users;
         ViewBag.User = user;
         ViewBag.Friend = friend;
         ViewBag.Requests = requests;
@@ -159,6 +179,8 @@ public class UserController: Controller
         newFriend.Relationship = "Pending"; // Relationship status
         DATABASE.Friends.Add(newFriend);
         DATABASE.SaveChanges();
+        List<User> users = DATABASE.Users.ToList();
+        ViewBag.Users = users;
         return RedirectToAction("UserProfile", new {pid = pid});
     }
 
@@ -172,7 +194,9 @@ public class UserController: Controller
         original.Relationship = "Friends";
         DATABASE.Friends.Update(original);
         DATABASE.SaveChanges();
-        return RedirectToAction("UserProfile", new {pid = pid});
+        List<User> users = DATABASE.Users.ToList();
+        ViewBag.Users = users;
+        return RedirectToAction("UserProfile", new {pid = id});
     }
 
     [HttpPost("/friend/cancel/{pid}")]
@@ -184,16 +208,17 @@ public class UserController: Controller
     
         DATABASE.Friends.Remove(original);
         DATABASE.SaveChanges();
-        return RedirectToAction("UserProfile", new {pid = id});
+        List<User> users = DATABASE.Users.ToList();
+        ViewBag.Users = users;
+        return RedirectToAction("UserProfile", new {pid = pid});
     }
 
     [HttpPost("/clear/id")]
     public IActionResult Logout()
     {
         HttpContext.Session.Clear();
-        return RedirectToAction("LogReg");
+        return RedirectToAction("Dashboard");
     }
-
 
     [HttpGet("/edit/user/{uid}")]
     public IActionResult EditUser(int uid)
@@ -201,33 +226,8 @@ public class UserController: Controller
         if (notLogged) return RedirectToAction("LogReg", "User");
         if (uid != id) return RedirectToAction("UserProfile", new {pid = id});
         User? user = DATABASE.Users.FirstOrDefault(u => u.UserId == id);
+        List<User> users = DATABASE.Users.ToList();
+        ViewBag.Users = users;
         return View("EditForm", user);
     }
-
-    // [HttpPost("/submit/edit/{uid}")]
-    // public IActionResult SubmitEdit(int uid, User updatedUser)
-    // {
-    //     if (notLogged) return RedirectToAction("LogReg", "User");
-    //     if (uid != id) return RedirectToAction("UserProfile", new {pid = id});
-
-    //     User? original = DATABASE.Users.FirstOrDefault(u => u.UserId == uid);
-
-    //     if (!ModelState.IsValid)
-    //     {
-
-    //     }
-        
-
-    //     PasswordHasher<User> hasher = new PasswordHasher<User>();
-    //     PasswordVerificationResult validator = hasher.VerifyHashedPassword(updatedUser, original.Password, updatedUser.Password);
-    //     if (validator == 0)
-    //     {
-    //         ModelState.AddModelError("Password", "is incorrect");
-    //         return EditUser((int)id);
-    //     }
-    //     PasswordHasher<User> hashed = new PasswordHasher<User>();
-    //     updatedUser.Password = hashed.HashPassword(updatedUser, updatedUser.NewPassword);
-
-    //     return RedirectToAction("UserProfile", new {pid = id});
-    // }
 }

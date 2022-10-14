@@ -8,13 +8,23 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    private MyContext DATABASE;
+
+    public HomeController(ILogger<HomeController> logger, MyContext context)
     {
         _logger = logger;
+        DATABASE = context;
     }
 
     public IActionResult Index()
     {
+        // List<User> users = DATABASE.Users.ToList();
+        // ViewBag.Users = users;
+        // Console.WriteLine(users.Count());
+        // foreach (User user in users)
+        // {
+        //     Console.WriteLine(user.Username);
+        // }
         return View();
     }
 

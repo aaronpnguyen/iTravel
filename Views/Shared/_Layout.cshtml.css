@@ -7,6 +7,10 @@ nav {
   background-color: #A27B5C;
 }
 
+.center-nav {
+  width: 60%;
+}
+
 a.navbar-brand {
   color: #e5e5e5;
   white-space: normal;
@@ -34,11 +38,6 @@ a {
   background-color: #e14d5c;
 }
 
-/* #dashboard {
-  color: #fff;
-  text-decoration: none;
-} */
-
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   
   color: #fff; 
@@ -62,6 +61,53 @@ a {
 
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+
+#myInput {
+  box-sizing: border-box;
+  background-image: url('searchicon.png');
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 5px 15px;
+  border: none;
+  border-radius: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+#myInput:focus {
+  outline: 3px solid #ddd;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 230px;
+  overflow: auto;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block;
 }
 
 button.accept-policy {

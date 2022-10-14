@@ -1,0 +1,14 @@
+@if(ViewBag.Users != null)
+{
+
+    <div class="dropdown">
+        <input type="text" onclick="myFunction()" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+        <div id="myDropdown" class="dropdown-content">
+            @foreach (User user in ViewBag.Users)
+            {
+                <a href="/user/@user.UserId">@user.Username</a>
+            }
+        </div>
+    </div>
+}
+
